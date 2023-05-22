@@ -1,8 +1,8 @@
 <script>
 import AppTitle from './components/AppTitle.vue';
 import FilterCards from './components/FilterCards.vue';
-import CardsList from './components/CardsList.vue';
 import FilterResults from './components/FilterResults.vue';
+import CardsList from './components/CardsList.vue';
 import axios from 'axios';
 import { store } from './store';
 
@@ -15,8 +15,8 @@ export default {
   components: {
     AppTitle,
     FilterCards,
-    CardsList,
     FilterResults,
+    CardsList,
   },
   created() {
     axios
@@ -33,9 +33,19 @@ export default {
 
   <main>
     <FilterCards />
-    <CardsList />
     <FilterResults />
+    <CardsList />
   </main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
