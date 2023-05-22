@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-    <div class="card_x">
+    <div class="card_x rounded">
         <div class="img_container">
             <img :src="cardData.card_images[0].image_url" :alt="cardData.id">
         </div>
