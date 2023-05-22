@@ -12,8 +12,8 @@ export default {
             <img :src="cardData.card_images[0].image_url" :alt="cardData.id">
         </div>
         <div class="img_text py-2">
-            <div>{{ cardData.name }}</div>
-            <div class="py-1">{{ cardData.archetype }}</div>
+            <div class="text-light fw-bold">{{ cardData.name }}</div>
+            <div class="py-1 fw-bold">{{ cardData.archetype }}</div>
         </div>
     </div>
 </template>
