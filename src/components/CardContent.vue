@@ -7,11 +7,35 @@ export default {
 </script>
 
 <template>
-    <div>
-        <img :src="cardData.card_images[0].image_url_small" :alt="cardData.id">
-        <h3 class="name">{{ cardData.name }}</h3>
-        <div class="archetype">{{ cardData.archetype }}</div>
+    <div class="card_x">
+        <div class="img_container">
+            <img :src="cardData.card_images[0].image_url" :alt="cardData.id">
+        </div>
+        <div class="img_text py-2">
+            <div>{{ cardData.name }}</div>
+            <div class="py-1">{{ cardData.archetype }}</div>
+        </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card_x {
+    background-color: #D48F38;
+    margin: 2rem 1rem;
+    width: calc((100% / 5) - 2rem);
+
+    .img_container {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .img_text {
+        width: 100%;
+        text-align: center;
+        font-size: .8em;
+    }
+}
+</style>

@@ -15,9 +15,15 @@ export default {
 </script>
 
 <template>
-    <div class="cards_container">
-        <CardContent v-for="card in store.CardsList" :key="card.id" class="card" :cardData="card" />
+    <div class="cards_container d-flex flex-wrap bg-light">
+        <CardContent v-for="card in store.CardsList" :key="card.id" :cardData="card" />
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.cards_container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: white;
+}
+</style>

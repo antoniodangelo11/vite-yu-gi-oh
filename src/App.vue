@@ -39,13 +39,9 @@ export default {
 </template>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "../node_modules/bootstrap/scss/bootstrap";
 
-html {
-  font-family: Arial, Helvetica, sans-serif;
+main {
+  background-color: #D48F38;
 }
 </style>
