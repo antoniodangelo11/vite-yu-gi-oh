@@ -12,16 +12,33 @@ export default {
       store,
     };
   },
+
   components: {
     AppTitle,
     FilterCards,
     FilterResults,
     CardsList,
   },
+
+  methods: {
+    requestDataFromApi() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/archetypes.php',)
+        .then(response => (this.store.ArrArchetypes = response.data));
+    }
+  },
+
   created() {
     axios
-      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0', {
+        params: {
+          archetype_name: this.store.SearchArchetypes,
+        }
+      })
       .then(response => (this.store.CardsList = response.data.data));
+
+    this.requestDataFromApi();
+
   },
 };
 </script>
@@ -32,7 +49,7 @@ export default {
   </header>
 
   <main>
-    <FilterCards />
+    <FilterCards @performSearch="this.requestDataFromApi" />
     <FilterResults />
     <CardsList />
   </main>

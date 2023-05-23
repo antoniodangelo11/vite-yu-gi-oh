@@ -1,16 +1,27 @@
 <script>
-export default {
+import { store } from '../store';
 
-}
+export default {
+    data() {
+        return {
+            store,
+        }
+    },
+    methods: {
+        emitArchetypes() {
+            this.$emit('performSearch');
+        },
+    },
+};
 </script>
 
 <template>
     <div class="filter_cards">
-        <select class="form-select w-25" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+        <select v-model="store.SearchArchetypes" @change="this.emitArchetypes">
+            <option value="">Select Archetypes</option>
+            <option v-for="archetype in store.ArrArchetypes" :key="archetype.archetype_name" :value="archetype">
+                {{ archetype.archetype_name }}
+            </option>
         </select>
     </div>
 </template>
