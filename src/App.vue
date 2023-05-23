@@ -21,6 +21,12 @@ export default {
   },
 
   methods: {
+    loadPage() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0',)
+        .then(response => (this.store.CardsList = response.data.data));
+    },
+
     requestDataFromApi() {
       axios
         .get('https://db.ygoprodeck.com/api/v7/archetypes.php',)
@@ -35,16 +41,14 @@ export default {
           }
         })
         .then(response => (this.store.CardsList = response.data.data));
-    }
+    },
   },
 
   created() {
-    axios
-      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0',)
-      .then(response => (this.store.CardsList = response.data.data));
-
-    this.requestDataFromApi();
-
+    setInterval(() => {
+      this.loadPage();
+      this.requestDataFromApi();
+    }, 2000);
   },
 };
 </script>
