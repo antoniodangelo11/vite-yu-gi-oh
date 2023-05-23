@@ -25,16 +25,22 @@ export default {
       axios
         .get('https://db.ygoprodeck.com/api/v7/archetypes.php',)
         .then(response => (this.store.ArrArchetypes = response.data));
+    },
+
+    apiFilter() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
+          params: {
+            archetype: this.store.SearchArchetypes,
+          }
+        })
+        .then(response => (this.store.CardsList = response.data.data));
     }
   },
 
   created() {
     axios
-      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0', {
-        params: {
-          archetype_name: this.store.SearchArchetypes,
-        }
-      })
+      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0',)
       .then(response => (this.store.CardsList = response.data.data));
 
     this.requestDataFromApi();
@@ -49,7 +55,7 @@ export default {
   </header>
 
   <main>
-    <FilterCards @performSearch="this.requestDataFromApi" />
+    <FilterCards @performSearch="apiFilter" />
     <FilterResults />
     <CardsList />
   </main>
@@ -60,5 +66,6 @@ export default {
 
 main {
   background-color: #D48F38;
+  padding-bottom: 5rem;
 }
 </style>
