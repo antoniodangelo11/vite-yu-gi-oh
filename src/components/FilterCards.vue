@@ -29,7 +29,6 @@ export default {
 
 <style lang="scss" scoped>
 .filter_cards {
-    max-width: 1200px;
-    margin: auto;
+    margin-left: 100px;
 }
 </style>
