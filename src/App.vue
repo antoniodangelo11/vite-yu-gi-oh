@@ -48,7 +48,7 @@ export default {
     setInterval(() => {
       this.loadPage();
       this.requestDataFromApi();
-    }, 2000);
+    }, 1000);
   },
 };
 </script>
